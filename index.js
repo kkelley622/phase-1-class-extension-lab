@@ -2,12 +2,12 @@
 
 class Polygon {
 
-    constructor() {
-        this.arrayOfSides = []
+    constructor(arrayOfSides) {
+        this.arrayOfSides = arrayOfSides;
     }
 
     get countSides() {
-        return this.arrayOfSides.length; 
+        return this.arrayOfSides.length;
     }
 
     get perimeter() {
@@ -16,22 +16,30 @@ class Polygon {
 }
 
 class Triangle extends Polygon {
-
+    
     get isValid() {
+        let side1 = this.arrayOfSides[0];
+        let side2 = this.arrayOfSides[1];
+        let side3 = this.arrayOfSides[2];
 
-    }
+        if(side1 + side2 > side3 && side1 + side3 > side2
+             && side2 + side3 > side1){
+            return true
+        }else{
+            return false
+        }
+        }
+
 }
 
 class Square extends Polygon {
 
     get isValid() {
-        if(this.arrayOfSides[0] === this.arrayOfSides[1] === this.arrayOfSides[2] === this.arrayOfSides[3]) {
-            return true;
-        }
+
+        return this.arrayOfSides.every(value => value === this.arrayOfSides[0]);
     }
     get area() {
-        if(isValid === true) {
-            return this.arrayOfSides[0] * this.arrayOfSides[1];
-        }
+
+        return this.arrayOfSides[0] * this.arrayOfSides[1];
     }
 }
